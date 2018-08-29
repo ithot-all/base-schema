@@ -7,7 +7,8 @@ const User = Schema('User', {
 });
 
 const BannerSchema = Schema(false, {
-    name: String
+    name: String,
+    url: String
 });
 
 const Banner = mongoose.model('Banner', BannerSchema);
@@ -52,3 +53,4 @@ const TEST_CASE = {
         await conn.disconnect();
     }
 };
+
