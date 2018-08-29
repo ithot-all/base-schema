@@ -6,6 +6,7 @@
 # function
 - give your schema append `created_at` `updated_at` and manage them 
 - delete `_id` `__v` fields from output json
+- `mongoose.Promise` replace to `bluebird`
   
 # install 
 ```
