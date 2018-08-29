@@ -10,7 +10,7 @@
   
 # install 
 ```
-npm install base-schema
+npm install base-schema --save
 ```
 
 # usage 
