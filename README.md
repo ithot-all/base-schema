@@ -1,5 +1,5 @@
 # base-schema
-:zap: a mongoose base schema
+:smile: a mongoose base schema
 
 # function
 - give your schema append `created_at` `updated_at` and manage them 
@@ -16,6 +16,9 @@ const Schema = require('base-schema');
 const User = Schema('User', {
     username: String
 });
+(async() => {
+    await User.updateOne({}, { username: 'ithot' });
+})();
 ```
 # contribute
-> if you feel what else a base shema should have, welcome to improve [issue](https://github.com/dtboy1995/mongoose-acid/issues)
+> If you feel what else a base shema should have, welcome to improve [issue](https://github.com/dtboy1995/mongoose-acid/issues)
