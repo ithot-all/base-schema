@@ -1,3 +1,5 @@
+![android-sex-http](art/logo.png)
+
 # base-schema
 :smile: a mongoose base schema
 
@@ -11,6 +13,8 @@ npm install base-schema
 ```
 
 # usage 
+
+### simple
 ```javascript
 const Schema = require('base-schema');
 const User = Schema('User', {
@@ -20,5 +24,19 @@ const User = Schema('User', {
     await User.updateOne({}, { username: 'ithot' });
 })();
 ```
+
+### other
+```javascript
+const Schema = require('base-schema');
+// default return Model
+const User = Schema('User', {
+    username: String
+});
+// your can set first param to false to return Schema
+const UserSchema = Schema(false, {
+    username: String
+});
+```
+
 # contribute
 > If you feel what else a base shema should have, welcome to improve [issue](https://github.com/dtboy1995/mongoose-acid/issues)
