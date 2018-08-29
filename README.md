@@ -1,7 +1,7 @@
 ![android-sex-http](art/logo.png)
 
 # base-schema
-:smile: a mongoose base schema
+:smile: a mongoose base schema simply
 
 # function
 - give your schema append `created_at` `updated_at` and manage them 
