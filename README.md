@@ -1,2 +1,2 @@
 # base-schema
-a mongoose base schema
+:zap: a mongoose base schema
