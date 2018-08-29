@@ -6,6 +6,12 @@ const User = Schema('User', {
     username: String
 });
 
+const BannerSchema = Schema(false, {
+    name: String
+});
+
+const Banner = mongoose.model('Banner', BannerSchema);
+
 const init = async () => {
     const conn = await mongoose.connect(uri, {
         useNewUrlParser: true
@@ -36,6 +42,13 @@ const TEST_CASE = {
         });
         let user = await User.findOne();
         console.log(user.toJSON());
+        await conn.disconnect();
+    },
+    schema: async () => {
+        const conn = await mongoose.connect(uri, {
+            useNewUrlParser: true
+        });
+        let banner = await Banner.create({ name: 'banner' });
         await conn.disconnect();
     }
 };
