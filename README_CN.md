@@ -5,7 +5,7 @@
 
 # 功能
 - 给你的schema追加`created_at` `updated_at`字段并且管理他们的变化 
-- 再输入json中删除 `_id` `__v`字断
+- 再输出的json中删除 `_id` `__v`字断
 - 将`mongoose.Promise` 替换为 `bluebird`
   
 # 安装
