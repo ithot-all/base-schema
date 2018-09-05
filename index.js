@@ -25,6 +25,12 @@ const methods = [
 ];
 
 const middleware = (schema) => {
+    schema.pre('save', function (next) {
+        if (this.isModified()) {
+            this.updated_at = new Date();
+        }
+        next();
+    });
     methods.forEach((method) => {
         schema.pre(method, function (next) {
             this.update({}, { $set: { updated_at: new Date() } });
@@ -42,14 +48,6 @@ const Base = (model, fields, options = {}) => {
     }
     let schema = new mongoose.Schema(fields, options);
     middleware(schema);
-    schema.pre('save', function (next) {
-        if (this.isModified()) {
-            this.updated_at = new Date();
-        }
-        next();
-    });
-
-
     if (!schema.options.toJSON) {
         schema.options.toJSON = {};
     }
