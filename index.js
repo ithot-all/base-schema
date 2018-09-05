@@ -24,7 +24,7 @@ const methods = [
     'updateOne'
 ];
 
-const Attach = (schema) => {
+const middleware = (schema) => {
     methods.forEach((method) => {
         schema.pre(method, function (next) {
             this.update({}, { $set: { updated_at: new Date() } });
@@ -41,7 +41,7 @@ const Base = (model, fields, options = {}) => {
         fields.updated_at = Time;
     }
     let schema = new mongoose.Schema(fields, options);
-    Attach(schema);
+    middleware(schema);
     schema.pre('save', function (next) {
         if (this.isModified()) {
             this.updated_at = new Date();
