@@ -61,7 +61,7 @@ const Base = (model, fields, options = {}) => {
     let originTransform = schema.options.toJSON.transform;
     schema.options.toJSON.transform = (doc, ret, options) => {
         if (originTransform) {
-            ret = prevTransform(doc, ret, options);
+            ret = originTransform(doc, ret, options);
         }
         delete ret.__v;
         delete ret._id;
