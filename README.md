@@ -6,11 +6,10 @@
 # function
 - give your schema append `created_at` `updated_at` and manage them 
 - delete `_id` `__v` fields from output json
-- `mongoose.Promise` replace to `bluebird`
   
 # install 
 ```
-npm install base-schema --save
+npm i base-schema -S
 ```
 
 # usage 
@@ -38,6 +37,3 @@ const UserSchema = Schema(false, {
     username: String
 });
 ```
-
-# contribute
-> If you feel what else a base shema should have, welcome to improve [issue](https://github.com/dtboy1995/mongoose-acid/issues)

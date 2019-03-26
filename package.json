@@ -9,9 +9,7 @@
     "mongoose": "^5.2.10"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "node test.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dtboy1995/base-schema.git"

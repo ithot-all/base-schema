@@ -6,11 +6,10 @@
 # 功能
 - 给你的schema追加`created_at` `updated_at`字段并且管理他们的变化 
 - 在输出的json中删除 `_id` `__v`字断
-- 将`mongoose.Promise` 替换为 `bluebird`
   
 # 安装
 ```
-npm install base-schema --save
+npm i base-schema -S
 ```
 
 # 用法 
@@ -38,6 +37,3 @@ const UserSchema = Schema(false, {
     username: String
 });
 ```
-
-# 贡献
-> 如果你觉得一个基类Schema还应该有什么，欢迎一起改进 [issue](https://github.com/dtboy1995/mongoose-acid/issues)
