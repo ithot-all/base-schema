@@ -17,7 +17,6 @@ npm i base-schema -S
 ```
 
 ### usage 
-
 ```javascript
 const Schema = require('base-schema')
 const User = Schema('User', {
@@ -27,6 +26,14 @@ const User = Schema('User', {
     await User.create({ name: 'foo' })
 })()
 ```
+
+### helper
+
+| helper            | description                                       |
+| ----------------- | ------------------------------------------------- |
+| `Schema.Time`     | A date type that is retrieved as a Unix timestamp |
+| `Schema.ID`       | mongoose.Types.ObjectId                           |
+| `Schema.ObjectId` | mongoose.Schema.Types.ObjectId                    |
 
 ### test
 ```
