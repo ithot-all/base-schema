@@ -27,11 +27,11 @@ const User = Schema('User', {
 })()
 ```
 
-### helper
+### attribute
 
-| helper            | description                                       |
+| attribute            | description                                       |
 | ----------------- | ------------------------------------------------- |
-| `Schema.Time`     | A date type that is retrieved as a Unix timestamp |
+| `Schema.Time`     | A Date type that is retrieved as a Unix timestamp |
 | `Schema.ID`       | mongoose.Types.ObjectId                           |
 | `Schema.ObjectId` | mongoose.Schema.Types.ObjectId                    |
 

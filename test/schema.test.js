@@ -1,67 +1,52 @@
 const mongoose = require('mongoose')
-mongoose.set('debug', false)
 const Schema = require('../src/schema')
-const uri = os.platform() === 'win32' ? `mongodb://${hostname}:27017,${hostname}:27018,${hostname}:27019/test` : 'mongodb://localhost:27017,localhost:27018,localhost:27019/test'
-let conn
-const Account = mongoose.model('Account', new mongoose.Schema({
-    balance: Number
-}))
-const People = mongoose.model('People', new mongoose.Schema({
+
+const Foo2 = Schema('Foo2', {
+    name: String
+})
+
+const Foo = Schema('Foo', {
     name: String,
-    balance: Number
-}))
+    deleted_at: Schema.Time,
+    foo2: {
+        type: Schema.ObjectId,
+        ref: 'Foo2'
+    }
+})
+
+let conn
+
 beforeAll(async () => {
-    conn = await mongoose.connect(uri, {
-        replicaSet: 'rs',
+    conn = await mongoose.connect('mongodb://localhost/test', {
         useNewUrlParser: true
     })
-    await Account.deleteMany()
-    await People.deleteMany()
-    await Account.create({ balance: 100 })
-    await People.create({ name: 'Acid', balance: 0 })
+    await Foo.deleteMany()
+    await Foo2.deleteMany()
+    let foo2 = await Foo2.create({ name: 'foo2' })
+    await Foo.create({ name: 'foo', foo2: foo2.id })
 })
+
+test('created_at updated_at', async () => {
+    let foo = await Foo.findOne()
+    expect(foo.created_at).toBeDefined()
+    expect(foo.updated_at).toBeDefined()
+    let _foo = await Foo.findOneAndUpdate({}, { name: '_foo' }, { new: true })
+    expect(foo.updated_at).not.toEqual(_foo.updated_at)
+})
+
+test('Schema.ObjectId', async () => {
+    let foo = await Foo.findOne().populate('foo2')
+    expect(foo.foo2).toHaveProperty('name')
+})
+
+test('Schema.Time', async () => {
+    let foo = await Foo.findOne()
+    expect(foo.deleted_at).toBeDefined()
+    expect(typeof foo.deleted_at === 'number').toBeTruthy()
+})
+
 afterAll(async () => {
-    await Account.deleteMany()
-    await People.deleteMany()
+    await Foo.deleteMany()
+    await Foo2.deleteMany()
     await conn.disconnect()
-})
-test('transaction normal', async () => {
-    try {
-        await Acid(async (session) => {
-            await People.findOneAndUpdate(
-                { name: 'Acid' },
-                { $inc: { balance: 30 } },
-                { new: true, session })
-            await Account.findOneAndUpdate(
-                {},
-                { $inc: { balance: -30 } },
-                { new: true, session })
-        })
-    } catch (error) { }
-    let people = await People.findOne()
-    let account = await Account.findOne()
-    expect(people.balance).toEqual(0 + 30)
-    expect(account.balance).toEqual(100 - 30)
-})
-
-test('transaction abnormal', async () => {
-    try {
-        await Acid(async (session) => {
-            await People.findOneAndUpdate(
-                { name: 'Acid' },
-                { $inc: { balance: 30 } },
-                { new: true, session })
-            await Account.findOneAndUpdate(
-                {},
-                { $inc: { balance: -30 } },
-                { new: true, session })
-            throw new Error('User Error')
-        })
-    } catch (error) {
-
-    }
-    let people = await People.findOne()
-    let account = await Account.findOne()
-    expect(people.balance).toEqual(0 + 30)
-    expect(account.balance).toEqual(100 - 30)
 })
