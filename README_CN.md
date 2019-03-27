@@ -8,8 +8,8 @@
 :smile: mongoose Schema 小助手
 
 ### 功能
-- give your schema append `created_at` `updated_at` and manage them 
-- delete `_id` `__v` fields from output json
+- 给您的Schema添加`created_at`和`updated_at`属性并且自动管理他们 
+- 从输出的json中删除`_id`和`__v`
   
 ### 安装 
 ```
