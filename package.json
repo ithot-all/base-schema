@@ -1,6 +1,6 @@
 {
   "name": "base-schema",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "a base schema for mongoose",
   "main": "index.js",
   "dependencies": {
@@ -9,7 +9,9 @@
   "devDependencies": {
     "jest": "^24.5.0"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dtboy1995/base-schema.git"
