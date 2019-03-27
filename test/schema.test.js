@@ -14,6 +14,12 @@ const Foo = Schema('Foo', {
     }
 })
 
+const sleep = (millis) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, millis)
+    })
+}
+
 let conn
 
 beforeAll(async () => {
@@ -30,6 +36,7 @@ test('created_at updated_at', async () => {
     let foo = await Foo.findOne()
     expect(foo.created_at).toBeDefined()
     expect(foo.updated_at).toBeDefined()
+    await sleep(1000)
     let _foo = await Foo.findOneAndUpdate({}, { name: '_foo' }, { new: true })
     expect(foo.updated_at).not.toEqual(_foo.updated_at)
 })

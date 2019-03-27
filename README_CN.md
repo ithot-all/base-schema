@@ -1,39 +1,41 @@
-![android-sex-http](art/logo.png)
+![base-schema](art/logo.png)
+
+[![Build Status](https://img.shields.io/travis/ithot-all/base-schema/master.svg?style=flat-square)](https://travis-ci.org/ithot-all/base-schema)
+
+[![NPM](https://nodei.co/npm/base-schema.png?compact=true)](https://npmjs.org/package/base-schema)
 
 # base-schema
-:smile: 一个简易的生成mongoose Schema的小库
+:smile: mongoose Schema 小助手
 
-# 功能
-- 给你的schema追加`created_at` `updated_at`字段并且管理他们的变化 
-- 在输出的json中删除 `_id` `__v`字断
+### 功能
+- give your schema append `created_at` `updated_at` and manage them 
+- delete `_id` `__v` fields from output json
   
-# 安装
+### 安装 
 ```
 npm i base-schema -S
 ```
 
-# 用法 
-
-### 简单点
+### 用法 
 ```javascript
-const Schema = require('base-schema');
+const Schema = require('base-schema')
 const User = Schema('User', {
     username: String
-});
+})
 (async() => {
-    await User.updateOne({}, { username: 'ithot' });
-})();
+    await User.create({ name: 'foo' })
+})()
 ```
 
-### 其他
-```javascript
-const Schema = require('base-schema');
-// 默认返回的是Model
-const User = Schema('User', {
-    username: String
-});
-// 设置第一个参数为false将返回Schema
-const UserSchema = Schema(false, {
-    username: String
-});
+### 属性
+
+| 属性              | 描述                                 |
+| ----------------- | ------------------------------------ |
+| `Schema.Time`     | 一种日期类型，获取的时候是unix时间戳 |
+| `Schema.ID`       | mongoose.Types.ObjectId              |
+| `Schema.ObjectId` | mongoose.Schema.Types.ObjectId       |
+
+### 测试
+```
+npm test
 ```

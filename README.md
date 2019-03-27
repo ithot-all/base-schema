@@ -5,7 +5,7 @@
 [![NPM](https://nodei.co/npm/base-schema.png?compact=true)](https://npmjs.org/package/base-schema)
 
 # base-schema
-:smile: a mongoose base schema simply
+:smile: mongoose base schema simply
 
 ### functions
 - give your schema append `created_at` `updated_at` and manage them 
