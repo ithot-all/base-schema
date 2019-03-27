@@ -1,39 +1,34 @@
-![android-sex-http](art/logo.png)
+![base-schema](art/logo.png)
+
+[![Build Status](https://img.shields.io/travis/ithot-all/base-schema/master.svg?style=flat-square)](https://travis-ci.org/ithot-all/base-schema)
+
+[![NPM](https://nodei.co/npm/base-schema.png?compact=true)](https://npmjs.org/package/base-schema)
 
 # base-schema
 :smile: a mongoose base schema simply
 
-# function
+### functions
 - give your schema append `created_at` `updated_at` and manage them 
 - delete `_id` `__v` fields from output json
   
-# install 
+### install 
 ```
 npm i base-schema -S
 ```
 
-# usage 
+### usage 
 
-### simple
 ```javascript
-const Schema = require('base-schema');
+const Schema = require('base-schema')
 const User = Schema('User', {
     username: String
-});
+})
 (async() => {
-    await User.updateOne({}, { username: 'ithot' });
-})();
+    await User.create({ name: 'foo' })
+})()
 ```
 
-### other
-```javascript
-const Schema = require('base-schema');
-// default return Model
-const User = Schema('User', {
-    username: String
-});
-// your can set first param to false to return Schema
-const UserSchema = Schema(false, {
-    username: String
-});
+### test
+```
+npm test
 ```

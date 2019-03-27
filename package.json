@@ -4,11 +4,11 @@
   "description": "a base schema for mongoose",
   "main": "index.js",
   "dependencies": {
-    "bluebird": "^3.5.1",
-    "moment": "^2.22.2",
     "mongoose": "^5.2.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^24.5.0"
+  },
   "scripts": {},
   "repository": {
     "type": "git",
