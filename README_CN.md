@@ -27,13 +27,13 @@ await Foo.create({ name: 'foo' })
 
 ### 属性
 
-| 名称                | 描述                             |
-| ------------------- | -------------------------------- |
-| `Schema.Time`       | mongoose.Schema.Types.Time       |
-| `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   |
-| `Schema.Int32`      | mongoose.Schema.Types.Int32      |
-| `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 |
-| `Schema.Double`     | mongoose.Schema.Types.Double     |
+| 名称                | 引用                             | 描述                                           |
+| ------------------- | -------------------------------- | ---------------------------------------------- |
+| `Schema.Time`       | mongoose.Schema.Types.Time       | 一种日期类型，获取的是unix时间戳               |
+| `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   | 一个 `mongoose.Schema.Types.ObjectId` 的引用   |
+| `Schema.Int32`      | mongoose.Schema.Types.Int32      | 一个 `mongoose-int32` 模块的引用               |
+| `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 | 一个 `mongoose.Schema.Types.Decimal128` 的引用 |
+| `Schema.Double`     | mongoose.Schema.Types.Double     | 一个 `@mongoosejs/double` 模块的引用           |
 
 ### 测试
 ```

@@ -27,13 +27,13 @@ await Foo.create({ name: 'foo' })
 
 ### attribute
 
-| name                | description                      |
-| ------------------- | -------------------------------- |
-| `Schema.Time`       | mongoose.Schema.Types.Time       |
-| `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   |
-| `Schema.Int32`      | mongoose.Schema.Types.Int32      |
-| `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 |
-| `Schema.Double`     | mongoose.Schema.Types.Double     |
+| name                | ref                              | description                                 |
+| ------------------- | -------------------------------- | ------------------------------------------- |
+| `Schema.Time`       | mongoose.Schema.Types.Time       | A date type that retrieves a UNIX timestamp |
+| `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   | A ref to `mongoose.Schema.Types.ObjectId`   |
+| `Schema.Int32`      | mongoose.Schema.Types.Int32      | A ref to `mongoose-int32` module            |
+| `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 | A ref to `mongoose.Schema.Types.Decimal128` |
+| `Schema.Double`     | mongoose.Schema.Types.Double     | A ref to `@mongoosejs/double` module        |
 
 ### test
 ```
