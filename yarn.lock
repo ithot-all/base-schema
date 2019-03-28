@@ -276,6 +276,11 @@
     "@types/istanbul-lib-coverage" "^1.1.0"
     "@types/yargs" "^12.0.9"
 
+"@mongoosejs/double@^0.1.2":
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/@mongoosejs/double/download/@mongoosejs/double-0.1.2.tgz#11760271a7335a2dd3d484bab8eedd323c6a154b"
+  integrity sha1-EXYCcaczWi3T1IS6uO7dMjxqFUs=
+
 "@types/babel__core@^7.1.0":
   version "7.1.0"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.0.tgz#710f2487dda4dcfd010ca6abb2b4dc7394365c51"
@@ -2277,6 +2282,11 @@ mongodb@3.1.13:
   dependencies:
     mongodb-core "3.1.11"
     safe-buffer "^5.1.2"
+
+mongoose-int32@^0.3.1:
+  version "0.3.1"
+  resolved "http://registry.npm.taobao.org/mongoose-int32/download/mongoose-int32-0.3.1.tgz#925ff85542e99c06681a309b759fb49330d67bdc"
+  integrity sha1-kl/4VULpnAZoGjCbdZ+0kzDWe9w=
 
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"

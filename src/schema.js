@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+require('mongoose-int32')
+require('@mongoosejs/double')
 
 const Time = {
     type: Date,
@@ -13,25 +15,31 @@ const Time = {
             return new Date(parseInt(value * 1000))
         }
     }
-};
+}
+
+mongoose.Schema.Types.Time = Time
 
 const methods = [
     'update',
     'findOneAndUpdate',
     'updateMany',
-    'updateOne'
+    'updateOne',
+    'replaceOne'
 ]
 
 const middleware = (schema) => {
     schema.pre('save', function (next) {
-        if (this.isModified()) {
+        if (this.isModified() && !this.isModified('updated_at')) {
             this.updated_at = new Date()
         }
         next()
     })
-    methods.forEach((method) => {
+    methods.forEach(function (method) {
         schema.pre(method, function (next) {
-            this.update({}, { $set: { updated_at: new Date() } })
+            let updates = this.getUpdate()
+            if (!updates['updated_at']) {
+                updates['updated_at'] = new Date()
+            }
             next()
         })
     })
@@ -73,8 +81,10 @@ const Base = (model, fields, options = {}) => {
     }
 }
 
-Base.Time = Time
+Base.Time = mongoose.Schema.Types.Time
 Base.ObjectId = mongoose.Schema.Types.ObjectId
-Base.ID = mongoose.Types.ObjectId
+Base.Decimal128 = mongoose.Schema.Types.Decimal128
+Base.Int32 = mongoose.Schema.Types.Int32
+Base.Double = mongoose.Schema.Types.Double
 
 module.exports = Base

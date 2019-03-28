@@ -19,21 +19,21 @@ npm i base-schema -S
 ### usage 
 ```javascript
 const Schema = require('base-schema')
-const User = Schema('User', {
-    username: String
+const Foo = Schema('Foo', {
+    name: String
 })
-(async() => {
-    await User.create({ name: 'foo' })
-})()
+await Foo.create({ name: 'foo' })
 ```
 
 ### attribute
 
-| attribute            | description                                       |
-| ----------------- | ------------------------------------------------- |
-| `Schema.Time`     | A Date type that is retrieved as a Unix timestamp |
-| `Schema.ID`       | mongoose.Types.ObjectId                           |
-| `Schema.ObjectId` | mongoose.Schema.Types.ObjectId                    |
+| name                | description                      |
+| ------------------- | -------------------------------- |
+| `Schema.Time`       | mongoose.Schema.Types.Time       |
+| `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   |
+| `Schema.Int32`      | mongoose.Schema.Types.Int32      |
+| `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 |
+| `Schema.Double`     | mongoose.Schema.Types.Double     |
 
 ### test
 ```

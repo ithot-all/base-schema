@@ -19,21 +19,21 @@ npm i base-schema -S
 ### 用法 
 ```javascript
 const Schema = require('base-schema')
-const User = Schema('User', {
-    username: String
+const Foo = Schema('Foo', {
+    name: String
 })
-(async() => {
-    await User.create({ name: 'foo' })
-})()
+await Foo.create({ name: 'foo' })
 ```
 
 ### 属性
 
-| 属性              | 描述                                 |
-| ----------------- | ------------------------------------ |
-| `Schema.Time`     | 一种日期类型，获取的时候是unix时间戳 |
-| `Schema.ID`       | mongoose.Types.ObjectId              |
-| `Schema.ObjectId` | mongoose.Schema.Types.ObjectId       |
+| 名称                | 描述                             |
+| ------------------- | -------------------------------- |
+| `Schema.Time`       | mongoose.Schema.Types.Time       |
+| `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   |
+| `Schema.Int32`      | mongoose.Schema.Types.Int32      |
+| `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 |
+| `Schema.Double`     | mongoose.Schema.Types.Double     |
 
 ### 测试
 ```
