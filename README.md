@@ -10,6 +10,7 @@
 ### functions
 - give your schema append `created_at` `updated_at` and manage them 
 - delete `_id` `__v` fields from output json
+- add the `page` method for paging
   
 ### install 
 ```
@@ -23,6 +24,7 @@ const Foo = Schema('Foo', {
     name: String
 })
 await Foo.create({ name: 'foo' })
+await Foo.find({}).page(1, 10)
 ```
 
 ### attribute

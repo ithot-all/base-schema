@@ -10,6 +10,7 @@
 ### 功能
 - 给您的Schema添加`created_at`和`updated_at`属性并且自动管理他们 
 - 从输出的json中删除`_id`和`__v`
+- 添加page方法用来分页
   
 ### 安装 
 ```
@@ -23,6 +24,7 @@ const Foo = Schema('Foo', {
     name: String
 })
 await Foo.create({ name: 'foo' })
+await Foo.find({}).page(1, 10)
 ```
 
 ### 属性

@@ -82,6 +82,16 @@ test('Schema.Int32', async () => {
     expect(foo.age).toEqual(Math.round(20 + 1.5))
 })
 
+test('Model.page', async () => {
+    let docs = []
+    for (let i = 0; i < 10; i++) {
+        docs.push({ name: i })
+    }
+    await Foo2.insertMany(docs)
+    let foos = await Foo2.find({}).page(1, 5)
+    expect(foos.length).toEqual(5)
+})
+
 afterAll(async () => {
     await Foo.deleteMany()
     await Foo2.deleteMany()

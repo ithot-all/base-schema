@@ -45,6 +45,16 @@ const middleware = (schema) => {
     })
 }
 
+const plugins = function (schema) {
+    schema.query['page'] = function (page, limit) {
+        page = typeof page === 'number' && page > 0 ? page : 1
+        limit = typeof limit === 'number' && limit > 0 ? limit : 10
+        return this
+            .skip((page - 1) * limit)
+            .limit(limit)
+    }
+}
+
 const Base = (model, fields, options = {}) => {
     if (!fields.created_at) {
         fields.created_at = Time
@@ -53,7 +63,10 @@ const Base = (model, fields, options = {}) => {
         fields.updated_at = Time
     }
     let schema = new mongoose.Schema(fields, options)
+
     middleware(schema)
+    plugins(schema)
+
     if (!schema.options.toJSON) {
         schema.options.toJSON = {}
     }
