@@ -6,11 +6,15 @@ const Time = {
     type: Date,
     default: Date.now,
     get (value) {
-        return parseInt(value.getTime() / 1000)
+        if (typeof value === 'object') {
+            return parseInt(value.getTime() / 1000)
+        } else {
+            return value
+        }
     },
     set (value) {
         if (value instanceof Date) {
-            return value;
+            return value
         } else {
             return new Date(parseInt(value * 1000))
         }
