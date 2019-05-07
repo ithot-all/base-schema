@@ -8,7 +8,7 @@
 :smile: mongoose base schema simply
 
 ### functions
-- give your schema append `created_at` `updated_at` and manage them 
+- give schema append `created_at` `updated_at` and manage them 
 - delete `_id` `__v` fields from output json
 - add the `page` method for paging
   
@@ -31,7 +31,6 @@ await Foo.find({}).page(1, 10)
 
 | name                | ref                              | description                                 |
 | ------------------- | -------------------------------- | ------------------------------------------- |
-| `Schema.Time`       | mongoose.Schema.Types.Time       | A date type that retrieves a UNIX timestamp |
 | `Schema.ObjectId`   | mongoose.Schema.Types.ObjectId   | A ref to `mongoose.Schema.Types.ObjectId`   |
 | `Schema.Int32`      | mongoose.Schema.Types.Int32      | A ref to `mongoose-int32` module            |
 | `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 | A ref to `mongoose.Schema.Types.Decimal128` |
