@@ -27,7 +27,7 @@ const sleep = (millis) => {
 }
 
 beforeAll(async () => {
-    conn = await mongoose.connect('mongodb://DESKTOP-KDJKJGK/test', {
+    conn = await mongoose.connect('mongodb://localhost/test', {
         useNewUrlParser: true
     })
     await Foo.deleteMany()
