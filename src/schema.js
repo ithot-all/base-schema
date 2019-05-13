@@ -54,4 +54,6 @@ Base.Decimal128 = mongoose.Schema.Types.Decimal128
 Base.Int32 = mongoose.Schema.Types.Int32
 Base.Double = mongoose.Schema.Types.Double
 
+Base.Field = require('./fields')
+
 module.exports = Base
