@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@mongoosejs/double": "^0.1.2",
+    "bcryptjs": "^2.4.3",
     "mongoose": "^5.2.10",
     "mongoose-int32": "^0.3.1"
   },
