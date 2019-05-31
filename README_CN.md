@@ -43,7 +43,7 @@ await Foo.find({}).page(1, 10)
 | `password` | Schema.Field.password | 给Shema添加`password`字段和`compwd`方法 |
 
 ```js
-const { phone, password } = Schema.Field.phone
+const { phone, password } = Schema.Field
 const User = Schema('User', { phone: phone, password: password })
 const user = await User.create({
     phone: '13812345678',
