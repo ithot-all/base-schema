@@ -36,6 +36,27 @@ await Foo.find({}).page(1, 10)
 | `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 | A ref to `mongoose.Schema.Types.Decimal128` |
 | `Schema.Double`     | mongoose.Schema.Types.Double     | A ref to `@mongoosejs/double` module        |
 
+### default field
+| name       | ref                   | description                                               |
+| ---------- | --------------------- | --------------------------------------------------------- |
+| `phone`    | Schema.Field.phone    | add the `phone` and `used_phones` fields to Shema         |
+| `password` | Schema.Field.password | add the `password` field and the `compwd` method to Shema |
+
+```js
+const { phone, password } = Schema.Field.phone
+const User = Schema('User', { phone: phone, password: password })
+const user = await User.create({
+    phone: '13812345678',
+    password: '@lili520'
+})
+// user.phone = '13812345678'
+// user.used_phones = ['13812345678']
+// user.password = hash
+// await user.compwd('@lili520') is true
+// await User.findOne().select('+password +used_phones') 
+// password and used_phones default no select
+```
+
 ### test
 ```
 npm test

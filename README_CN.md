@@ -36,6 +36,27 @@ await Foo.find({}).page(1, 10)
 | `Schema.Decimal128` | mongoose.Schema.Types.Decimal128 | 一个 `mongoose.Schema.Types.Decimal128` 的引用 |
 | `Schema.Double`     | mongoose.Schema.Types.Double     | 一个 `@mongoosejs/double` 模块的引用           |
 
+### 预设字段
+| 名称       | 引用                  | 描述                                    |
+| ---------- | --------------------- | --------------------------------------- |
+| `phone`    | Schema.Field.phone    | 给Shema添加`phone`和`used_phones`字段   |
+| `password` | Schema.Field.password | 给Shema添加`password`字段和`compwd`方法 |
+
+```js
+const { phone, password } = Schema.Field.phone
+const User = Schema('User', { phone: phone, password: password })
+const user = await User.create({
+    phone: '13812345678',
+    password: '@lili520'
+})
+// user.phone = '13812345678'
+// user.used_phones = ['13812345678']
+// user.password = hash
+// await user.compwd('@lili520') is true
+// await User.findOne().select('+password +used_phones') 
+// password 和 used_phones 默认不查询
+```
+
 ### 测试
 ```
 npm test

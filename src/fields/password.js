@@ -2,25 +2,32 @@ const bcrypt = require('bcryptjs')
 const util = require('util')
 const hash = util.promisify(bcrypt.hash)
 const compare = util.promisify(bcrypt.compare)
+const BaseField = require('./field')
 
-module.exports = (schema) => {
-    schema.add({
-        type: String,
-        select: false
-    })
-    schema.pre('save', (next) => {
-        if (this.isModified('password')) {
-            hash(this.password, 5).then((hash) => {
-                this.password = hash
+class Password extends BaseField {
+    wrap (schema) {
+        schema.add({
+            password: {
+                type: String,
+                select: false
+            }
+        })
+        schema.pre('save', function (next) {
+            if (this.isModified('password')) {
+                hash(this.password, 5).then((hash) => {
+                    this.password = hash
+                    next()
+                }).catch(next)
+            } else {
                 next()
-            }).catch(next)
-        } else {
-            next()
-        }
-    })
-    schema.methods = Object.assign(schema.methods, {
-        comppwd (password) {
-            return compare(password, this.password)
-        }
-    })
+            }
+        })
+        schema.methods = Object.assign(schema.methods, {
+            compwd (password) {
+                return compare(password, this.password)
+            }
+        })
+    }
 }
+
+module.exports = new Password()

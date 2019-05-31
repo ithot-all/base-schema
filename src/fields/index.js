@@ -1,4 +1,2 @@
-module.exports = {
-    phone: require('./phone'),
-    password: require('./password')
-}
+exports.phone = require('./phone')
+exports.password = require('./password')

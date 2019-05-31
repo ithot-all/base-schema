@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 require('mongoose-int32')
 require('@mongoosejs/double')
 const timestamps = ['created_at', 'updated_at']
+const BaseField = require('./fields/field')
 
 const helpers = function (schema) {
     schema.query['page'] = function (page, limit) {
@@ -12,12 +13,30 @@ const helpers = function (schema) {
 }
 
 const Base = (model, fields, options = {}) => {
-    const schema = new mongoose.Schema(fields, Object.assign({
+    let reals = {}
+    let wrappers = []
+    for (const key in fields) {
+        if (fields.hasOwnProperty(key)) {
+            let field = fields[key]
+            if (field instanceof BaseField) {
+                wrappers.push(field)
+            }
+            else {
+                reals[key] = field
+            }
+        }
+    }
+    const schema = new mongoose.Schema(reals, Object.assign({
         timestamps: {
             createdAt: timestamps[0],
             updatedAt: timestamps[1]
         }
     }, options))
+    if (wrappers.length > 0) {
+        wrappers.forEach((wrapper) => {
+            wrapper.wrap(schema)
+        })
+    }
     helpers(schema)
     if (!schema.options.toJSON) {
         schema.options.toJSON = {}
