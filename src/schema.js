@@ -6,6 +6,8 @@ const BaseField = require('./fields/field')
 
 const helpers = function (schema) {
     schema.query['page'] = function (page, limit) {
+        if(typeof page === 'string') page = +page
+        if(typeof limit === 'string') limit = +limit
         page = typeof page === 'number' && page > 0 ? page : 1
         limit = typeof limit === 'number' && limit > 0 ? limit : 10
         return this.skip((page - 1) * limit).limit(limit)
