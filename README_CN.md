@@ -57,6 +57,23 @@ const user = await User.create({
 // password 和 used_phones 默认不查询
 ```
 
+### 聚合中使用ObjectId为查询条件
+```js
+const A = Schema('A', {
+    name: String
+})
+
+const B = Schema('B', {
+    name: String,
+    a: {
+        type: Schema.ObjectId,
+        ref: 'A'
+    }
+})
+// 原来的用法是{a: new mongoose.Types.Object('5cf8e018e5fd67512487be2e')}
+await B.aggregate().match({ a: Schema.Id('5cf8e018e5fd67512487be2e') })
+```
+
 ### 测试
 ```
 npm test

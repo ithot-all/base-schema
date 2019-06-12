@@ -57,6 +57,23 @@ const user = await User.create({
 // password and used_phones default no select
 ```
 
+### ObjectId used in the aggregation 
+```js
+const A = Schema('A', {
+    name: String
+})
+
+const B = Schema('B', {
+    name: String,
+    a: {
+        type: Schema.ObjectId,
+        ref: 'A'
+    }
+})
+// origin {a: new mongoose.Types.Object('5cf8e018e5fd67512487be2e')}
+await B.aggregate().match({ a: Schema.Id('5cf8e018e5fd67512487be2e') })
+```
+
 ### test
 ```
 npm test
