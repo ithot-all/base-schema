@@ -14,7 +14,7 @@
   
 ### 安装 
 ```
-npm i base-schema -S
+npm i base-schema mongoose -S
 ```
 
 ### 用法 
