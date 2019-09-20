@@ -1,13 +1,15 @@
 {
   "name": "base-schema",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "a base schema for mongoose",
   "main": "index.js",
   "dependencies": {
     "@mongoosejs/double": "^0.1.2",
     "bcryptjs": "^2.4.3",
-    "mongoose": "^5.2.10",
     "mongoose-int32": "^0.3.1"
+  },
+  "peerDependencies": {
+    "mongoose": "5.7.x"
   },
   "devDependencies": {
     "jest": "^24.5.0"

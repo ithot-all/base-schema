@@ -70,7 +70,7 @@ const B = Schema('B', {
         ref: 'A'
     }
 })
-// origin {a: new mongoose.Types.Object('5cf8e018e5fd67512487be2e')}
+// origin {a: new mongoose.Types.ObjectId('5cf8e018e5fd67512487be2e')}
 await B.aggregate().match({ a: Schema.Id('5cf8e018e5fd67512487be2e') })
 ```
 
