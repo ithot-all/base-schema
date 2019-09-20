@@ -1,6 +1,6 @@
 {
   "name": "base-schema",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "a base schema for mongoose",
   "main": "index.js",
   "dependencies": {
